@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="es.netrunners.broadcastreceivers"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="10" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <activity
+            android:name=".BroadcastReceiversActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".CallnSMSReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="MyReceiver" >
+        </receiver>
+        <receiver android:name="AlarmReceiver" >
+        </receiver>
+        <receiver android:name="FirstReceiver" >
+            <intent-filter android:priority="100" >
+                <action android:name="de.brockhaus.START" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="SecondReceiver" >
+            <intent-filter android:priority="50" >
+                <action android:name="de.brockhaus.START" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
